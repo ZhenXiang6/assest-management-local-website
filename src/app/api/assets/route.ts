@@ -3,18 +3,27 @@ import fs from 'fs/promises';
 import path from 'path';
 import { Asset } from '@/types';
 
-const dataFilePath = path.join(process.cwd(), 'public/data/assets.json');
+const dataDir = path.join(process.cwd(), 'public/data');
+const dataFilePath = path.join(dataDir, 'assets.json');
+
+async function ensureDataFileExists(): Promise<void> {
+  try {
+    await fs.access(dataFilePath);
+  } catch (error) {
+    // If the file doesn't exist, create the directory and the file with an empty array
+    if (error instanceof Error && (error as NodeJS.ErrnoException).code === 'ENOENT') {
+      await fs.mkdir(dataDir, { recursive: true });
+      await fs.writeFile(dataFilePath, JSON.stringify([], null, 2));
+    } else {
+      throw error;
+    }
+  }
+}
 
 async function readAssets(): Promise<Asset[]> {
-  try {
-    const data = await fs.readFile(dataFilePath, 'utf-8');
-    return JSON.parse(data);
-  } catch (error) {
-    if (error instanceof Error && (error as NodeJS.ErrnoException).code === 'ENOENT') {
-      return [];
-    }
-    throw error;
-  }
+  await ensureDataFileExists();
+  const data = await fs.readFile(dataFilePath, 'utf-8');
+  return JSON.parse(data);
 }
 
 async function writeAssets(assets: Asset[]): Promise<void> {

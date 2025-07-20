@@ -2,22 +2,32 @@ import { NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
 
-const dataFilePath = path.join(process.cwd(), 'public/data/exchange-rates.json');
+const dataDir = path.join(process.cwd(), 'public/data');
+const dataFilePath = path.join(dataDir, 'exchange-rates.json');
 
-async function readRates(): Promise<Record<string, number>> {
+const defaultRates = {
+    "USD": 32.5,
+    "BTC": 65000,
+    "CNY": 4.5
+};
+
+async function ensureDataFileExists(): Promise<void> {
     try {
-        const data = await fs.readFile(dataFilePath, 'utf-8');
-        return JSON.parse(data);
+        await fs.access(dataFilePath);
     } catch (error) {
         if (error instanceof Error && (error as NodeJS.ErrnoException).code === 'ENOENT') {
-            return {
-                "USD": 32.5,
-                "BTC": 65000,
-                "CNY": 4.5
-            };
+            await fs.mkdir(dataDir, { recursive: true });
+            await fs.writeFile(dataFilePath, JSON.stringify(defaultRates, null, 2));
+        } else {
+            throw error;
         }
-        throw error;
     }
+}
+
+async function readRates(): Promise<Record<string, number>> {
+    await ensureDataFileExists();
+    const data = await fs.readFile(dataFilePath, 'utf-8');
+    return JSON.parse(data);
 }
 
 async function writeRates(rates: Record<string, number>): Promise<void> {

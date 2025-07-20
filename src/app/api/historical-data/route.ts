@@ -3,18 +3,26 @@ import fs from 'fs/promises';
 import path from 'path';
 import { HistoricalData } from '@/types';
 
-const dataFilePath = path.join(process.cwd(), 'public/data/historical-data.json');
+const dataDir = path.join(process.cwd(), 'public/data');
+const dataFilePath = path.join(dataDir, 'historical-data.json');
 
-async function readHistoricalData(): Promise<HistoricalData[]> {
+async function ensureDataFileExists(): Promise<void> {
   try {
-    const data = await fs.readFile(dataFilePath, 'utf-8');
-    return JSON.parse(data);
+    await fs.access(dataFilePath);
   } catch (error) {
     if (error instanceof Error && (error as NodeJS.ErrnoException).code === 'ENOENT') {
-      return [];
+      await fs.mkdir(dataDir, { recursive: true });
+      await fs.writeFile(dataFilePath, JSON.stringify([], null, 2));
+    } else {
+      throw error;
     }
-    throw error;
   }
+}
+
+async function readHistoricalData(): Promise<HistoricalData[]> {
+  await ensureDataFileExists();
+  const data = await fs.readFile(dataFilePath, 'utf-8');
+  return JSON.parse(data);
 }
 
 async function writeHistoricalData(data: HistoricalData[]): Promise<void> {
