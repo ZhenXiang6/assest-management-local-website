@@ -11,12 +11,13 @@
   },
   {
     "date": "2025-07-20",
-    "totalValue": 1975578.96,
+    "totalValue": 1975579.96,
     "US stock": 441000,
     "US cash": 147000,
     "TWD stock": 500000,
     "CS2 skin": 41000,
     "TWD cash": 500000,
-    "crypto": 346578.96
+    "crypto": 346578.96,
+    "test": 1
   }
 ]

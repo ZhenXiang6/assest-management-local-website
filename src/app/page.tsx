@@ -136,9 +136,8 @@ export default function Home() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newAsset),
     });
-    if (addAssetModalRef.current?.modalInstance) {
-      addAssetModalRef.current.modalInstance.hide();
-    }
+    // The data-bs-dismiss attribute on the button will handle hiding the modal.
+    // The hidden.bs.modal event listener will then trigger fetchData.
   };
 
   const handleEditAsset = (asset: Asset) => {
@@ -151,9 +150,6 @@ export default function Home() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedAsset),
     });
-    if (editAssetModalRef.current?.modalInstance) {
-      editAssetModalRef.current.modalInstance.hide();
-    }
     setEditingAsset(null);
   };
 
@@ -172,9 +168,6 @@ export default function Home() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newRates),
     });
-    if (editRatesModalRef.current?.modalInstance) {
-      editRatesModalRef.current.modalInstance.hide();
-    }
   };
 
   const handleEditHistoricalData = (data: HistoricalData) => {
@@ -187,9 +180,6 @@ export default function Home() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedData),
     });
-    if (editHistoryModalRef.current?.modalInstance) {
-      editHistoryModalRef.current.modalInstance.hide();
-    }
     setEditingHistoricalData(null);
   };
 

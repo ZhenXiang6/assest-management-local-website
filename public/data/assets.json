@@ -54,5 +54,13 @@
     "currency": "BTC",
     "date": "2025-07-20",
     "id": "2025-07-20T07:07:03.931Z"
+  },
+  {
+    "name": "test",
+    "category": "test",
+    "value": 1,
+    "currency": "TWD",
+    "date": "2025-07-20",
+    "id": "2025-07-20T07:47:36.209Z"
   }
 ]

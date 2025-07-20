@@ -64,7 +64,7 @@ const AddAssetModal = forwardRef<HTMLDivElement, Props>(({ onAdd }, ref) => {
               setCurrency('');
               setDate(new Date().toISOString().split('T')[0]);
             }}>Close</button>
-            <button type="button" className="btn btn-primary" onClick={handleSubmit}>Add Asset</button>
+            <button type="button" className="btn btn-primary" onClick={handleSubmit} data-bs-dismiss="modal">Add Asset</button>
           </div>
         </div>
       </div>
