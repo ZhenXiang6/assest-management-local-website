@@ -35,8 +35,8 @@ This application uses a local, file-based storage system. All your data is store
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/your-repo-name.git
-    cd your-repo-name
+    git clone https://github.com/ZhenXiang6/assest-management-local-website.git
+    cd assest-management-local-website
     ```
 
 2.  **Install dependencies:**
