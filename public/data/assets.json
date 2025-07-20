@@ -1,0 +1,58 @@
+[
+  {
+    "name": "NVIDIA",
+    "category": "US stock",
+    "value": 5000,
+    "currency": "USD",
+    "date": "2025-07-20",
+    "id": "2025-07-20T06:31:52.729Z"
+  },
+  {
+    "name": "US cash",
+    "category": "US cash",
+    "value": 5000,
+    "currency": "USD",
+    "date": "2025-07-20",
+    "id": "2025-07-20T06:33:39.817Z"
+  },
+  {
+    "name": "0050",
+    "category": "TWD stock",
+    "value": 500000,
+    "currency": "TWD",
+    "date": "2025-07-20",
+    "id": "2025-07-20T06:34:21.305Z"
+  },
+  {
+    "name": "CS2 skin",
+    "category": "CS2 skin",
+    "value": 10000,
+    "currency": "CNY",
+    "date": "2025-07-20",
+    "id": "2025-07-20T06:36:33.390Z"
+  },
+  {
+    "name": "TWD cash",
+    "category": "TWD cash",
+    "value": 500000,
+    "currency": "TWD",
+    "date": "2025-07-20",
+    "id": "2025-07-20T06:37:11.154Z"
+  },
+  {
+    "name": "VOO",
+    "category": "US stock",
+    "value": 10000,
+    "currency": "USD",
+    "date": "2025-07-20",
+    "id": "2025-07-20T07:05:31.235Z"
+  },
+  {
+    "name": "bitcoin",
+    "category": "crypto",
+    "value": 0.1,
+    "currency": "BTC",
+    "date": "2025-07-20",
+    "id": "2025-07-20T07:07:03.931Z"
+  }
+]

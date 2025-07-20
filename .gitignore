@@ -33,5 +33,4 @@ pnpm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Personal Data - Keep asset files local
-/public/data/
+
